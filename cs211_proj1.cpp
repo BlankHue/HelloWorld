@@ -24,16 +24,18 @@ int main(int argc, char** argv)
 	int j = 0;
 	int k = 0;
 
+	double * C;
+	double * B;
+	double * A;
 
 	const int n = atoi(argv[1]);
 
 	const int arr_size = n * n;
 
 
-	double C[arr_size];
-	double B[arr_size];
-	double A[arr_size];
-
+	C = (double*)malloc(arr_size);
+	B = (double*)malloc(arr_size); 
+	A = (double*)malloc(arr_size);
 
 
 	RandomizeArrays(A, B, arr_size);
