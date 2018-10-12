@@ -33,9 +33,9 @@ int main(int argc, char** argv)
 	const int arr_size = n * n;
 
 
-	C = (double*)malloc(arr_size);
-	B = (double*)malloc(arr_size); 
-	A = (double*)malloc(arr_size);
+	C = (double*)malloc(arr_size*8);
+	B = (double*)malloc(arr_size*8); 
+	A = (double*)malloc(arr_size*8);
 
 
 	RandomizeArrays(A, B, arr_size);
