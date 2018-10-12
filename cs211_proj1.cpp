@@ -1,8 +1,20 @@
 #include <iostream>
-#include "time.h"
+#include "time.h""
 #include "cstdlib"
-
 using namespace std;
+
+void RandomizeArrays(double arr1[], double arr2[], int array_size)
+{
+	int m = 0;
+	for (m = 0; m < array_size; ++m)
+	{
+		arr1[m] = rand() % 100;
+		arr2[m] = rand() % 100;
+
+	}
+}
+
+
 
 int main()
 {
@@ -18,16 +30,13 @@ int main()
 	double B[arr_size];
 	double A[arr_size];
 	
-	for (i = 0; i < arr_size; ++i)
-	{
-		B[i] = rand() % 100;
-		A[i] = rand() % 100;
-	}
-
+	
+	RandomizeArrays(A, B, arr_size);
 
 	clock_t t;
 	t = clock();
 
+	/* dgemm(): simple ijk version triple loop algorithm */
 	for (i = 0; i < n; i++)
 	{
 		for (j = 0; j < n; j++)
@@ -40,8 +49,32 @@ int main()
 	}
 
 	t = clock() - t;
+
+
+
+
 	cout << "TIME IS " << t << " something...." << endl;
 
-	cout << "hello world" << endl;
+	RandomizeArrays(A, B, arr_size);
+
+	t = clock();
+
+	/* dgemm1: simple ijk version triple loop algorithm with register reuse */
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			register double r = C[i*n + j];
+			for (k = 0; k < n; k++)
+			{
+				r += A[i*n + k] * B[k*n + j];
+			}
+			C[i*n + j] = r;
+		}
+	}
+
+	t = clock() - t;
+
+	cout << "TIME IS " << t << " something...." << endl;
 
 }
