@@ -1,14 +1,15 @@
-For dgemm0 and n size of 4096 we have clock time of 0
-For dgemm1 and n size of 4096 we have clock time of 0
+For dgemm0 and n size of 64 we have clock time of 0
+For dgemm1 and n size of 64 we have clock time of 0
 
-For dgemm0 and n size of 16384 we have clock time of 20000
-For dgemm1 and n size of 16384 we have clock time of 20000
+For dgemm0 and n size of 128 we have clock time of 0.03
+For dgemm1 and n size of 128 we have clock time of 0.02
 
-For dgemm0 and n size of 65536 we have clock time of 250000
-For dgemm1 and n size of 65536 we have clock time of 130000
+For dgemm0 and n size of 256 we have clock time of 0.29
+For dgemm1 and n size of 256 we have clock time of 0.15
 
-For dgemm0 and n size of 262144 we have clock time of 1710000
-For dgemm1 and n size of 262144 we have clock time of 1060000
+For dgemm0 and n size of 512 we have clock time of 3.25
+For dgemm1 and n size of 512 we have clock time of 1.82
 
-/var/spool/slurmd/job05302/slurm_script: line 17: 17937 Segmentation fault      ./cs211_proj1 1024
-/var/spool/slurmd/job05302/slurm_script: line 19: 17938 Segmentation fault      ./cs211_proj1 2048
+For dgemm0 and n size of 1024 we have clock time of 26.32
+For dgemm1 and n size of 1024 we have clock time of 16.59
+
