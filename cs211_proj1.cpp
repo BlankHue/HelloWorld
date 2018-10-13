@@ -33,9 +33,9 @@ int main(int argc, char** argv)
 	const int arr_size = n * n;
 
 
-	C = (double*)malloc(arr_size*8);
-	B = (double*)malloc(arr_size*8); 
-	A = (double*)malloc(arr_size*8);
+	C = (double*)malloc(arr_size * 8);
+	B = (double*)malloc(arr_size * 8); 
+	A = (double*)malloc(arr_size * 8);
 
 
 	RandomizeArrays(A, B, arr_size);
@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 
 	t = clock() - t;
 
-	cout << "For dgemm0 and n size of " << n << " we have clock time of " << t << endl;
+	cout << "For dgemm0 and n size of " << n << " we have clock time of " << (double(t)/CLOCKS_PER_SEC) << endl;
 
 	RandomizeArrays(A, B, arr_size);
 
@@ -86,6 +86,6 @@ int main(int argc, char** argv)
 
 	t = clock() - t;
 
-	cout << "For dgemm1 and n size of " << n << " we have clock time of " << t << endl << endl;
+	cout << "For dgemm1 and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl << endl;
 
 }
