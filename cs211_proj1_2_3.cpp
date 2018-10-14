@@ -141,7 +141,24 @@ int main(int argc, char** argv)
 	}
 	else
 	{
-		cout << "Correctness: FALSE" << endl;
+		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] <<  endl;
 	}
 
+
+	RandomizeArrays(A, B, arr_size);
+	
+	t = clock();
+
+	/* ikj */
+	for (i = 0; i < n; i++)
+	{
+		for (k = 0; k < n; k++)
+		{
+			register double r = A[i*n + k];
+			for (j = 0; j < n; j++)
+			{
+				C[i*n + j] += r * B[k*n + j];
+			}
+		}
+	}
 }
