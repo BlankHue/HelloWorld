@@ -94,7 +94,8 @@ int main(int argc, char** argv)
 
 	cout << "For ijk and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	double ijk_solution[arr_size] = C; //saves the solution for ijk
+	double ijk_solution[arr_size]; 
+	ijk_solution = C; //saves the solution for ijk
 
 	RandomizeArrays(A, B, arr_size);
 
