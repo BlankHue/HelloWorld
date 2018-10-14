@@ -55,6 +55,8 @@ int main(int argc, char** argv)
 
 	RandomizeArrays(A, B, arr_size);
 
+	cout << "STARTING PROGRAM" << endl;
+
 	clock_t t;
 
 	t = clock();
