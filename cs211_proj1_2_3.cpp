@@ -15,11 +15,39 @@ void RandomizeArrays(double arr1[], double arr2[], int array_size)
 
 	for (m = 0; m < array_size; ++m)
 	{
+		srand(1);
 		arr1[m] = rand() % 100;
 		arr2[m] = rand() % 100;
 	}
 }
 
+
+void checkArrays(double arr1[], double arr2[], int array_size)
+{
+	/* takes in the same arrays and checks if element to element similarity*/
+	int r = 0;
+	bool ArraysSame = true;
+	for (r = 0; r < array_size; r++)
+	{
+		if (arr1[r] == arr2[r])
+		{
+			continue;
+		}
+		else
+		{
+			ArraysSame = false;
+		}
+	}
+
+	if (ArraysSame)
+	{
+		cout << "Correction test passed" << endl;
+	}
+	else
+	{
+		cout << "Correction test failed" << endl;
+	}
+}
 
 
 int main(int argc, char** argv)
