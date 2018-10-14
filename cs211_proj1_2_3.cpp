@@ -27,7 +27,6 @@ void storeMax(double arr[], double store_array[], int store_here, int array_size
 			tempMax = arr[r];
 		}
 	}
-	
 	store_array[store_here] = tempMax;
 }
 
@@ -57,8 +56,6 @@ int main(int argc, char** argv)
 	RandomizeArrays(A, B, arr_size);
 
 	clock_t t;
-
-	cout << "For ijk and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
 	t = clock();
 
@@ -105,5 +102,4 @@ int main(int argc, char** argv)
 	storeMax(C, check_array, 1, arr_size); //stores max of solution matrix in an array at index 0
 
 	cout << "Max value of the last two previous solutions: " << check_array[0] << " and " << check_array[1] << endl;
-	
 }
