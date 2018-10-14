@@ -89,9 +89,9 @@ int main(int argc, char** argv)
 			register double sum = 0.0;
 			for (k = 0; k < n; k++)
 			{
-				sum += A[j*n + i] * B[k*i + k];
+				sum += A[i*n + k] * B[k*n + j];
 			}
-			C[j*n + i] = sum;
+			C[i*n + j] = sum;
 		}
 	}
 
@@ -101,5 +101,45 @@ int main(int argc, char** argv)
 
 	storeMax(C, check_array, 1, arr_size); //stores max of solution matrix in an array at index 0
 
-	cout << "Max value of the last two previous solutions: " << check_array[0] << " and " << check_array[1] << endl;
+	if (check_array[0] == check_array[1])
+	{
+		cout << "Correctness: TRUE" << endl;
+	}
+	else 
+	{
+		cout << "Correctness: FALSE" << endl;
+	}
+
+	RandomizeArrays(A, B, arr_size);
+
+	t = clock();
+
+	/* kij */
+	for (k = 0; k < n; k++)
+	{
+		for (i = 0; i < n; i++)
+		{
+			register double r = A[i*n + k];
+			for (j = 0; j < n; j++)
+			{
+				C[i*n + j] += r * B[k*n + j];
+			}
+		}
+	}
+
+	t = clock() - t;
+
+	cout << "For kij and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
+
+	storeMax(C, check_array, 2, arr_size);
+
+	if (check_array[1] == check_array[2])
+	{
+		cout << "Correctness: TRUE" << endl;
+	}
+	else
+	{
+		cout << "Correctness: FALSE" << endl;
+	}
+
 }
