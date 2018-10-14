@@ -2,15 +2,10 @@
 #include <iostream>
 #include <cstdlib>
 
-
-
 using namespace std;
-
-
 
 void RandomizeArrays(double arr1[], double arr2[], int array_size)
 {
-
 	int m = 0;
 
 	for (m = 0; m < array_size; ++m)
@@ -22,31 +17,18 @@ void RandomizeArrays(double arr1[], double arr2[], int array_size)
 }
 
 
-void checkArrays(double arr1[], double arr2[], int array_size)
+void storeMax(double arr[], double store_array[], int store_here, int array_size)
 {
-	/* takes in the same arrays and checks if element to element similarity*/
-	int r = 0;
-	bool ArraysSame = true;
-	for (r = 0; r < array_size; r++)
+	double tempMax = 0;
+	for (int r = 0; r < array_size; r++)
 	{
-		if (arr1[r] == arr2[r])
+		if (arr[r] > tempMax)
 		{
-			continue;
-		}
-		else
-		{
-			ArraysSame = false;
+			tempMax = arr[r];
 		}
 	}
-
-	if (ArraysSame)
-	{
-		cout << "Correction test passed" << endl;
-	}
-	else
-	{
-		cout << "Correction test failed" << endl;
-	}
+	
+	store_array[store_here] = tempMax;
 }
 
 
@@ -62,6 +44,7 @@ int main(int argc, char** argv)
 	double * C;
 	double * B;
 	double * A;
+	double * check_array;
 
 	const int n = atoi(argv[1]);
 	const int arr_size = n * n;
@@ -69,6 +52,7 @@ int main(int argc, char** argv)
 	C = (double*)malloc(arr_size * sizeof(double));
 	B = (double*)malloc(arr_size * sizeof(double));
 	A = (double*)malloc(arr_size * sizeof(double));
+	check_array = (double*)malloc(50 * sizeof(double)); //just used to check arrays
 
 	RandomizeArrays(A, B, arr_size);
 
@@ -94,8 +78,7 @@ int main(int argc, char** argv)
 
 	cout << "For ijk and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	double ijk_solution[arr_size]; 
-	ijk_solution = C; //saves the solution for ijk
+	storeMax(C, check_array, 0, arr_size); //stores max of solution matrix in an array at index 0
 
 	RandomizeArrays(A, B, arr_size);
 
@@ -119,6 +102,8 @@ int main(int argc, char** argv)
 
 	cout << "For jik and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	cout << "Correctness between these two solutions is: ";
-	checkArrays(ijk_solution, C, arr_size);
+	storeMax(C, check_array, 1, arr_size); //stores max of solution matrix in an array at index 0
+
+	cout << "Max value of the last two previous solutions: " << check_array[0] << " and " << check_array[1] << endl;
+	
 }
