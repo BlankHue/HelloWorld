@@ -57,14 +57,16 @@ int main(int argc, char** argv)
 	t = clock();
 
 	/* ijk */
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++) 
+		{
 			register double sum = 0.0;
 			for (k = 0; k < n; k++)
 			{
-				sum += A[i][k] * B[k][j];
+				sum += A[i*n+k] * B[k*n+j];
 			}
-			C[i][j] = sum;
+			C[i*n+j] = sum;
 		}
 	}
 
