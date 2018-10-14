@@ -94,5 +94,30 @@ int main(int argc, char** argv)
 
 	cout << "For ijk and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
+	double ijk_solution[arr_size] = C; //saves the solution for ijk
 
+	RandomizeArrays(A, B, arr_size);
+
+	t = clock();
+
+	/* jik */
+	for (j = 0; j < n; j++)
+	{
+		for (i = 0; i < n; i++)
+		{
+			register double sum = 0.0;
+			for (k = 0; k < n; k++)
+			{
+				sum += A[j*n + i] * B[k*i + k];
+			}
+			C[j*n + i] = sum;
+		}
+	}
+
+	t = clock() - t;
+
+	cout << "For jik and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
+
+	cout << "Correctness between these two solutions is: ";
+	checkArrays(ijk_solution, C, arr_size);
 }
