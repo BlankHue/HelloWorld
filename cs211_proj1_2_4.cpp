@@ -67,7 +67,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	int block = 10; // block size
+	int block = 8; // block size
 
 	/* ijk */
 	
@@ -93,6 +93,7 @@ int main(int argc, char** argv)
 	t = clock() - t;
 
 	cout << "For ijk cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
+	/*
 
 	storeMax(C, check_array, 0, arr_size); //stores max of solution matrix in an array at index 0
 
@@ -100,7 +101,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	/* jik */
+	// jik
 	for (j = 0; j < n; j++)
 	{
 		for (i = 0; i < n; i++)
@@ -133,7 +134,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	/* kij */
+	// kij
 	for (k = 0; k < n; k++)
 	{
 		for (i = 0; i < n; i++)
@@ -166,7 +167,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	/* ikj */
+	// ikj
 	for (i = 0; i < n; i++)
 	{
 		for (k = 0; k < n; k++)
@@ -199,7 +200,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	/* jki */
+	// jki
 	for (j = 0; j < n; j++)
 	{
 		for (k = 0; k < n; k++)
@@ -231,7 +232,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	/* kji */
+	// kji
 	for (k = 0; k < n; k++)
 	{
 		for (j = 0; j < n; j++)
@@ -258,5 +259,5 @@ int main(int argc, char** argv)
 	{
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
 	}
-
+	*/
 }
