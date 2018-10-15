@@ -161,4 +161,10 @@ int main(int argc, char** argv)
 			}
 		}
 	}
+
+	t = clock() - t;
+
+	cout << "For ikj and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
+
+	storeMax(C, check_array, 2, arr_size);
 }
