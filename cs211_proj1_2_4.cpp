@@ -71,20 +71,23 @@ int main(int argc, char** argv)
 
 	/* ijk */
 	
-	for (int kk = 0; kk < n; kk += block)
+	for (i = 0; i < n; i += block)
 	{
-		for (int jj = 0; jj < n; jj += block)
+		for (j = 0; i < n; j += block)
 		{
-			for (int i = 0; i < n; i++)
+			for (k = 0; k < n; k += block)
 			{
-				for (int j = jj; j << jj + block; j++)
+				for (int i1 = i; i1 < i + block; i1++)
 				{
-					register double sum = C[i*n + j];
-					for (k = kk; k < kk + block; k++)
+					for (int j1 = j; j1 < j + block; j1++)
 					{
-						sum += A[i*n + k] * B[k*n + j];
+						register double r = C[i1*n + j1];
+						for (int k1 = k; k1 < k + block; k1++)
+						{
+							r += A[i1*n + k1] * B[k1*n + j1];
+						}
+						C[i1*n + j1] = r;
 					}
-					C[i*n + j] = sum;
 				}
 			}
 		}
