@@ -5,7 +5,7 @@
 #SBATCH -n 1
 #SBATCH -t 00:20:00
 
-./cs211_proj1_2_3 64
+./cs211_proj1_2_3 2048
 
 foo=bar
 : '
