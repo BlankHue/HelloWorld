@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void RandomizeArrays(double arr1[], double arr2[], int array_size)
+void RandomizeArrays(double arr1[], double arr2[], double arr3[], int array_size)
 {
 	int m = 0;
 
@@ -13,6 +13,12 @@ void RandomizeArrays(double arr1[], double arr2[], int array_size)
 		srand(1);
 		arr1[m] = rand() % 100;
 		arr2[m] = rand() % 100;
+	}
+
+	//clean array C
+	for (m = 0; m < array_size; ++m)
+	{
+		arr3[m] = 0;
 	}
 }
 
@@ -53,7 +59,7 @@ int main(int argc, char** argv)
 	A = (double*)malloc(arr_size * sizeof(double));
 	check_array = (double*)malloc(50 * sizeof(double)); //just used to check arrays
 
-	RandomizeArrays(A, B, arr_size);
+	RandomizeArrays(A, B, C, arr_size);
 
 	cout << "STARTING PROGRAM" << endl;
 
@@ -79,7 +85,7 @@ int main(int argc, char** argv)
 
 	storeMax(C, check_array, 0, arr_size); //stores max of solution matrix in an array at index 0
 
-	RandomizeArrays(A, B, arr_size);
+	RandomizeArrays(A, B, C, arr_size);
 
 	t = clock();
 
@@ -112,7 +118,7 @@ int main(int argc, char** argv)
 		cout << "Correctness: FALSE" << endl;
 	}
 
-	RandomizeArrays(A, B, arr_size);
+	RandomizeArrays(A, B, C, arr_size);
 
 	t = clock();
 
@@ -145,7 +151,7 @@ int main(int argc, char** argv)
 	}
 
 
-	RandomizeArrays(A, B, arr_size);
+	RandomizeArrays(A, B, C, arr_size);
 	
 	t = clock();
 
@@ -163,8 +169,10 @@ int main(int argc, char** argv)
 	}
 
 	t = clock() - t;
-
+	
 	cout << "For ikj and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
 	storeMax(C, check_array, 2, arr_size);
+
+	RandomizeArrays(A, B, C, arr_size);
 }
