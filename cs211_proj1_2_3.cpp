@@ -115,7 +115,7 @@ int main(int argc, char** argv)
 	}
 	else 
 	{
-		cout << "Correctness: FALSE" << endl;
+		cout << "Correctness: FALSE " << endl << "first value: " << check_array[0] << endl << "second value: " << check_array[1] << endl;
 	}
 
 	RandomizeArrays(A, B, C, arr_size);
@@ -172,7 +172,80 @@ int main(int argc, char** argv)
 	
 	cout << "For ikj and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	storeMax(C, check_array, 2, arr_size);
+	storeMax(C, check_array, 3, arr_size);
+
+	if (check_array[2] == check_array[3])
+	{
+		cout << "Correctness: TRUE" << endl;
+	}
+	else
+	{
+		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
+	}
+
 
 	RandomizeArrays(A, B, C, arr_size);
+
+	t = clock();
+
+	/* jki */
+	for (j = 0; j < n; j++)
+	{
+		for (k = 0; k < n; k++)
+		{
+			register double r = B[k*n + j];
+			for (i = 0; i < n; i++)
+			{
+				C[i*n + j] += A[i*n + k] * r;
+			}
+		}
+	}
+
+	t = clock() - t;
+
+	cout << "For jki and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
+
+	storeMax(C, check_array, 4, arr_size);
+
+	if (check_array[3] == check_array[4])
+	{
+		cout << "Correctness: TRUE" << endl;
+	}
+	else
+	{
+		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
+	}
+
+	RandomizeArrays(A, B, C, arr_size);
+
+	t = clock();
+
+	/* kji */
+	for (k = 0; k < n; k++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			register double r = B[k*n + j];
+			for (i = 0; i < n; i++)
+			{
+				C[i*n + j] += A[i*n + k] * r;
+			}
+		}
+	}
+
+	t = clock() - t;
+
+	cout << "For kji and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
+
+	storeMax(C, check_array, 5, arr_size);
+
+	if (check_array[3] == check_array[4])
+	{
+		cout << "Correctness: TRUE" << endl;
+	}
+	else
+	{
+		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
+	}
+
 }
