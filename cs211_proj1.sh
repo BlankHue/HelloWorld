@@ -3,6 +3,7 @@
 #SBATCH --output=res.txt
 #SBATCH -N 1
 #SBATCH -n 1
+#SBATCH -w, --nodelist=node05
 #SBATCH -t 00:20:00
 
 ./cs211_proj1_2_3 64
