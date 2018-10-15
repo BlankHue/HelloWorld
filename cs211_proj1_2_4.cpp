@@ -67,7 +67,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	int block = 8; // block size
+	int block = 13; // block size
 
 	/* ijk */
 	
