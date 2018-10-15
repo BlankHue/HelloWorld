@@ -3,7 +3,7 @@
 #SBATCH --output=res.txt
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH -t 00:20:00
+#SBATCH -t 00:59:00
 
 ./cs211_proj1_2_3 2048
 
