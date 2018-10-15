@@ -81,14 +81,11 @@ int main(int argc, char** argv)
 				{
 					for (int j1 = j; j1 < j + block; j1++)
 					{
-						cout << "made it" << endl;
 						register double r = C[i1*n + j1];
-						cout << "made it2" << endl;
 						for (int k1 = k; k1 < k + block; k1++)
 						{
-							cout << "made it3" << endl;
 							r += A[i1*n + k1] * B[k1*n + j1];
-							cout << "made it4" << endl;
+							cout << "iteration: " << k1 << endl;
 						}
 						C[i1*n + j1] = r;
 					}
