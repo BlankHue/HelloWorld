@@ -70,21 +70,21 @@ int main(int argc, char** argv)
 	int block = 10; // block size
 
 	/* ijk */
-	for (i = 0; i < n; i += block) 
+	
+	for (int kk = 0; kk < n; kk += block)
 	{
-		for (j = 0; j < n; j += block) 
+		for (int jj = 0; jj < n; jj += block)
 		{
-			for (k = 0; k < n; k += block)
+			for (int i = 0; i < n; i++)
 			{
-				for (int i1 = i; i1 < i + block; i++)
+				for (int j = jj; j << jj + block; j++)
 				{
-					for (int j1 = j; j1 < j + block; j++)
+					register double sum = C[i*n + j];
+					for (k = kk; k < kk + block; k++)
 					{
-						for (int k1 = k; k1 < k + block; k++)
-						{
-							C[i1*n + j1] += A[i1*n + k1] * B[k1*n + j1];
-						}
+						sum += A[i*n + k] * B[k*n + j];
 					}
+					C[i*n + j] = sum;
 				}
 			}
 		}
