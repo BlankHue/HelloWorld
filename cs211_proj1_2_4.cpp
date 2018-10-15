@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 	
 	for (i = 0; i < n; i += block)
 	{
-		for (j = 0; i < n; j += block)
+		for (j = 0; j < n; j += block)
 		{
 			for (k = 0; k < n; k += block)
 			{
