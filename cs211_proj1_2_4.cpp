@@ -1,5 +1,6 @@
 #include <ctime>
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
 
 using namespace std;
@@ -23,17 +24,18 @@ void RandomizeArrays(double arr1[], double arr2[], double arr3[], int array_size
 }
 
 
-void storeMax(double arr[], double store_array[], int store_here, int array_size)
+double Correctness(double arr1[], double arr2[], int array_size)
 {
-	double tempMax = 0;
+	double tempMax = abs(arr1[0] - arr2[0]);
 	for (int r = 0; r < array_size; r++)
 	{
-		if (arr[r] > tempMax)
+		if (tempMax > abs(arr1[r] - arr2[r]))
 		{
-			tempMax = arr[r];
+			tempMax = abs(arr1[r] - arr2[r]);
 		}
 	}
-	store_array[store_here] = tempMax;
+	
+	return tempMax;
 }
 
 
@@ -63,7 +65,7 @@ int main(int argc, char** argv)
 
 	RandomizeArrays(A, B, C, arr_size);
 
-	cout << "STARTING PROGRAM" << endl;
+	cout << "STARTING PROGRAM: cache blocking with block size 8" << endl;
 
 	clock_t t;
 
@@ -99,11 +101,9 @@ int main(int argc, char** argv)
 
 	cout << "For ijk cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 	
+	RandomizeArrays(A, B, C1, arr_size);
 
-	storeMax(C, check_array, 0, arr_size); //stores max of solution matrix in an array at index 0
-
-	RandomizeArrays(A, B, C, arr_size);
-
+	
 	// jik
 
 	t = clock();
@@ -118,12 +118,12 @@ int main(int argc, char** argv)
 				{
 					for (int i1 = i; i1 < i + block; i1++)
 					{
-						register double r = C[j1*n + i1];
+						register double r = C1[j1*n + i1];
 						for (int k1 = k; k1 < k + block; k1++)
 						{
 							r += A[j1*n + i1] * B[i1*n + k1];
 						}
-						C[j1*n + i1] = r;
+						C1[j1*n + i1] = r;
 					}
 				}
 			}
@@ -136,7 +136,7 @@ int main(int argc, char** argv)
 	cout << "For jik cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
 
-	storeMax(C, check_array, 1, arr_size); //stores max of solution matrix in an array at index 0
+	cout << "Max difference between algorithms is: " << setprecision(16) << Correctness(C, C1, arr_size) << endl;
 
 	if (check_array[0] == check_array[1])
 	{
