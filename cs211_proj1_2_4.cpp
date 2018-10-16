@@ -237,21 +237,31 @@ int main(int argc, char** argv)
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
 	}
 
-	/*
+	
 
 	RandomizeArrays(A, B, C, arr_size);
 
 	t = clock();
 
 	// jki
-	for (j = 0; j < n; j++)
+	for (j = 0; j < n; j += block)
 	{
-		for (k = 0; k < n; k++)
+		for (k = 0; k < n; k += block)
 		{
-			register double r = B[k*n + j];
-			for (i = 0; i < n; i++)
+			for (i = 0; i < n; i += block)
 			{
-				C[i*n + j] += A[i*n + k] * r;
+				for (int j1 = i; j1 < j + block; j1++)
+				{
+					for (int k1 = k; k1 < k + block; k1++)
+					{
+						register double r = C[j1*n + k1];
+						for (int i1 = i; i1 < i + block; i1++)
+						{
+							r += A[j1*n + k1] * B[k1*n + i1];
+						}
+						C[j1*n + k1] = r;
+					}
+				}
 			}
 		}
 	}
@@ -270,7 +280,7 @@ int main(int argc, char** argv)
 	{
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
 	}
-
+	/*
 	RandomizeArrays(A, B, C, arr_size);
 
 	t = clock();
