@@ -237,6 +237,7 @@ int main(int argc, char** argv)
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
 	}
 
+	/*
 
 	RandomizeArrays(A, B, C, arr_size);
 
@@ -290,7 +291,7 @@ int main(int argc, char** argv)
 	t = clock() - t;
 
 	cout << "For kji and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
-	ca
+	
 	storeMax(C, check_array, 5, arr_size);
 
 	if (check_array[3] == check_array[4])
