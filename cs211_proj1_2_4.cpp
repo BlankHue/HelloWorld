@@ -138,15 +138,7 @@ int main(int argc, char** argv)
 
 	cout << "Max difference between algorithms is: " << setprecision(16) << Correctness(C, C1, arr_size) << endl;
 
-	if (check_array[0] == check_array[1])
-	{
-		cout << "Correctness: TRUE" << endl;
-	}
-	else
-	{
-		cout << "Correctness: FALSE " << endl << "first value: " << check_array[0] << endl << "second value: " << check_array[1] << endl;
-	}
-
+	/*
 	
 	RandomizeArrays(A, B, C, arr_size);
 
@@ -325,5 +317,5 @@ int main(int argc, char** argv)
 	{
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
 	}
-	
+*/	
 }
