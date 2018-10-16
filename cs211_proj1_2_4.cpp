@@ -47,6 +47,7 @@ int main(int argc, char** argv)
 
 
 	double * C;
+	double * C1;
 	double * B;
 	double * A;
 	double * check_array;
@@ -55,6 +56,7 @@ int main(int argc, char** argv)
 	const int arr_size = n * n;
 
 	C = (double*)malloc(arr_size * sizeof(double));
+	C1 = (double*)malloc(arr_size * sizeof(double));
 	B = (double*)malloc(arr_size * sizeof(double));
 	A = (double*)malloc(arr_size * sizeof(double));
 	check_array = (double*)malloc(50 * sizeof(double)); //just used to check arrays
@@ -250,7 +252,7 @@ int main(int argc, char** argv)
 		{
 			for (i = 0; i < n; i += block)
 			{
-				for (int j1 = i; j1 < j + block; j1++)
+				for (int j1 = j; j1 < j + block; j1++)
 				{
 					for (int k1 = k; k1 < k + block; k1++)
 					{
@@ -293,7 +295,7 @@ int main(int argc, char** argv)
 		{
 			for (i = 0; i < n; i += block)
 			{
-				for (int k1 = i; k1 < k + block; k1++)
+				for (int k1 = k; k1 < k + block; k1++)
 				{
 					for (int j1 = j; j1 < j + block; j1++)
 					{
