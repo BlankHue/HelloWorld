@@ -67,36 +67,21 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	int block = 8; // block size
-
 	/* ijk */
-
-	for (i = 0; i < n; i += block)
-	{
-		for (j = 0; j < n; j += block)
-		{
-			for (k = 0; k < n; k += block)
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < n; j++) {
+			register double sum = 0.0;
+			for (k = 0; k < n; k++)
 			{
-				for (int i1 = i; i1 < i + block; i1++)
-				{
-					for (int j1 = j; j1 < j + block; j1++)
-					{
-						register double r = C[i1*n + j1];
-						for (int k1 = k; k1 < k + block; k1++)
-						{
-							r += A[i1*n + k1] * B[k1*n + j1];
-						}
-						C[i1*n + j1] = r;
-					}
-				}
+				sum += A[i*n+k] * B[k*n+j];
 			}
+			C[i*n+j] = sum;
 		}
 	}
 
 	t = clock() - t;
 
-	cout << "For ijk cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
-	
+	cout << "For ijk and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
 	storeMax(C, check_array, 0, arr_size); //stores max of solution matrix in an array at index 0
 
@@ -104,34 +89,23 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	for (j = 0; j < n; j += block)
+	/* jik */
+	for (j = 0; j < n; j++)
 	{
-		for (i = 0; i < n; i += block)
+		for (i = 0; i < n; i++)
 		{
-			for (k = 0; k < n; k += block)
+			register double sum = 0.0;
+			for (k = 0; k < n; k++)
 			{
-				for (int j1 = j; j1 < j + block; j1++)
-				{
-					for (int i1 = i; i1 < i + block; i1++)
-					{
-						register double r = C[j1*n + i1];
-						for (int k1 = k; k1 < k + block; k1++)
-						{
-							r += A[j1*n + i1] * B[i1*n + k1];
-						}
-						C[j1*n + i1] = r;
-					}
-				}
+				sum += A[i*n + k] * B[k*n + j];
 			}
+			C[i*n + j] = sum;
 		}
 	}
-
 
 	t = clock() - t;
 
 	cout << "For jik and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
-
-
 
 	storeMax(C, check_array, 1, arr_size); //stores max of solution matrix in an array at index 0
 
@@ -139,17 +113,16 @@ int main(int argc, char** argv)
 	{
 		cout << "Correctness: TRUE" << endl;
 	}
-	else
+	else 
 	{
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[0] << endl << "second value: " << check_array[1] << endl;
 	}
 
-	/*
 	RandomizeArrays(A, B, C, arr_size);
 
 	t = clock();
 
-	// kij
+	/* kij */
 	for (k = 0; k < n; k++)
 	{
 		for (i = 0; i < n; i++)
@@ -166,7 +139,6 @@ int main(int argc, char** argv)
 
 	cout << "For kij and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	
 	storeMax(C, check_array, 2, arr_size);
 
 	if (check_array[1] == check_array[2])
@@ -175,15 +147,15 @@ int main(int argc, char** argv)
 	}
 	else
 	{
-		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
+		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] <<  endl;
 	}
 
 
 	RandomizeArrays(A, B, C, arr_size);
-
+	
 	t = clock();
 
-	// ikj
+	/* ikj */
 	for (i = 0; i < n; i++)
 	{
 		for (k = 0; k < n; k++)
@@ -197,7 +169,7 @@ int main(int argc, char** argv)
 	}
 
 	t = clock() - t;
-
+	
 	cout << "For ikj and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
 	storeMax(C, check_array, 3, arr_size);
@@ -216,7 +188,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	// jki
+	/* jki */
 	for (j = 0; j < n; j++)
 	{
 		for (k = 0; k < n; k++)
@@ -248,7 +220,7 @@ int main(int argc, char** argv)
 
 	t = clock();
 
-	// kji
+	/* kji */
 	for (k = 0; k < n; k++)
 	{
 		for (j = 0; j < n; j++)
@@ -264,7 +236,7 @@ int main(int argc, char** argv)
 	t = clock() - t;
 
 	cout << "For kji and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
-	ca
+
 	storeMax(C, check_array, 5, arr_size);
 
 	if (check_array[3] == check_array[4])
@@ -275,5 +247,5 @@ int main(int argc, char** argv)
 	{
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
 	}
-	*/
+
 }
