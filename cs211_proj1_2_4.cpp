@@ -102,6 +102,8 @@ int main(int argc, char** argv)
 
 	RandomizeArrays(A, B, C, arr_size);
 
+	// jik
+
 	t = clock();
 
 	for (j = 0; j < n; j += block)
@@ -132,7 +134,6 @@ int main(int argc, char** argv)
 	cout << "For jik and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
 
-
 	storeMax(C, check_array, 1, arr_size); //stores max of solution matrix in an array at index 0
 
 	if (check_array[0] == check_array[1])
@@ -144,23 +145,36 @@ int main(int argc, char** argv)
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[0] << endl << "second value: " << check_array[1] << endl;
 	}
 
-	/*
+	
 	RandomizeArrays(A, B, C, arr_size);
+
+	// kij
 
 	t = clock();
 
-	// kij
-	for (k = 0; k < n; k++)
+	for (k = 0; k < n; k += block)
 	{
-		for (i = 0; i < n; i++)
+		for (i = 0; i < n; i += block)
 		{
-			register double r = A[i*n + k];
-			for (j = 0; j < n; j++)
+			for (j = 0; j < n; j += block)
 			{
-				C[i*n + j] += r * B[k*n + j];
+				for (int k1 = k; k1 < k + block; k1++)
+				{
+					for (int i1 = i; i1 < i + block; i1++)
+					{
+						register double r = C[k1*n + i1];
+						for (int j1 = j; j1 < j + block; j1++)
+						{
+							r += A[k1*n + i1] * B[i1*n + j1];
+						}
+						C[k1*n + i1] = r;
+					}
+				}
 			}
 		}
 	}
+
+
 
 	t = clock() - t;
 
@@ -177,7 +191,7 @@ int main(int argc, char** argv)
 	{
 		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
 	}
-
+	/*
 
 	RandomizeArrays(A, B, C, arr_size);
 
