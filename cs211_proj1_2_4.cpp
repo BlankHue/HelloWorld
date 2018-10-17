@@ -135,8 +135,8 @@ int main(int argc, char** argv)
 
 	cout << "For jik cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-
-	cout << "Max difference between algorithms is: " << setprecision(16) << Correctness(C, C1, arr_size) << endl;
+	cout.precision(17);
+	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 
 	/*
 	
