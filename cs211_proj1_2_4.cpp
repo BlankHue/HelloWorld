@@ -34,7 +34,7 @@ double Correctness(double arr1[], double arr2[], int array_size)
 			tempMax = arr1[r] - arr2[r];
 		}
 	}
-	
+
 	return tempMax;
 }
 
@@ -100,10 +100,10 @@ int main(int argc, char** argv)
 	t = clock() - t;
 
 	cout << "For ijk cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
-	
+
 	RandomizeArrays(A, B, C1, arr_size);
 
-	
+
 	// jik
 
 	t = clock();
@@ -135,11 +135,11 @@ int main(int argc, char** argv)
 
 	cout << "For jik cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	cout.precision(17);
-	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 
-	
-	
+	cout << "Max difference between algorithms is: " << setprecision(17) << Correctness(C, C1, arr_size) << endl;
+
+
+
 	RandomizeArrays(A, B, C, arr_size);
 
 	// kij
@@ -246,7 +246,7 @@ int main(int argc, char** argv)
 
 	cout.precision(17);
 	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
-	
+
 	RandomizeArrays(A, B, C, arr_size);
 
 	t = clock();
@@ -278,7 +278,7 @@ int main(int argc, char** argv)
 	t = clock() - t;
 
 	cout << "For kji and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
-	
+
 	cout.precision(17);
 	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 }
