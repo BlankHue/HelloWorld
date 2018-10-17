@@ -26,12 +26,12 @@ void RandomizeArrays(double arr1[], double arr2[], double arr3[], int array_size
 
 double Correctness(double arr1[], double arr2[], int array_size)
 {
-	double tempMax = abs(arr1[0] - arr2[0]);
+	double tempMax = arr1[0] - arr2[0];
 	for (int r = 0; r < array_size; r++)
 	{
-		if (tempMax > abs(arr1[r] - arr2[r]))
+		if (tempMax > arr1[r] - arr2[r])
 		{
-			tempMax = abs(arr1[r] - arr2[r]);
+			tempMax = arr1[r] - arr2[r];
 		}
 	}
 	
