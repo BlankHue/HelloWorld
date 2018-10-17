@@ -138,7 +138,7 @@ int main(int argc, char** argv)
 	cout.precision(17);
 	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 
-	/*
+	
 	
 	RandomizeArrays(A, B, C, arr_size);
 
@@ -174,18 +174,8 @@ int main(int argc, char** argv)
 
 	cout << "For kij cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	
-	storeMax(C, check_array, 2, arr_size);
-
-	if (check_array[1] == check_array[2])
-	{
-		cout << "Correctness: TRUE" << endl;
-	}
-	else
-	{
-		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
-	}
-	
+	cout.precision(17);
+	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 
 	RandomizeArrays(A, B, C, arr_size);
 
@@ -220,18 +210,8 @@ int main(int argc, char** argv)
 
 	cout << "For ikj cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	storeMax(C, check_array, 3, arr_size);
-
-	if (check_array[2] == check_array[3])
-	{
-		cout << "Correctness: TRUE" << endl;
-	}
-	else
-	{
-		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
-	}
-
-	
+	cout.precision(17);
+	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 
 	RandomizeArrays(A, B, C, arr_size);
 
@@ -264,16 +244,8 @@ int main(int argc, char** argv)
 
 	cout << "For jki cache block and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 
-	storeMax(C, check_array, 4, arr_size);
-
-	if (check_array[3] == check_array[4])
-	{
-		cout << "Correctness: TRUE" << endl;
-	}
-	else
-	{
-		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
-	}
+	cout.precision(17);
+	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 	
 	RandomizeArrays(A, B, C, arr_size);
 
@@ -307,15 +279,6 @@ int main(int argc, char** argv)
 
 	cout << "For kji and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl;
 	
-	storeMax(C, check_array, 5, arr_size);
-
-	if (check_array[3] == check_array[4])
-	{
-		cout << "Correctness: TRUE" << endl;
-	}
-	else
-	{
-		cout << "Correctness: FALSE " << endl << "first value: " << check_array[1] << endl << "second value: " << check_array[2] << endl;
-	}
-*/	
+	cout.precision(17);
+	cout << "Max difference between algorithms is: " << fixed << Correctness(C, C1, arr_size) << endl;
 }
