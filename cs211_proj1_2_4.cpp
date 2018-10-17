@@ -84,20 +84,20 @@ int main(int argc, char** argv)
 
 	/* ijk */
 
-	for (i = 0; i < n; i += block+2)
+	for (i = 0; i < n; i += block)
 	{
-		for (j = 0; j < n; j += block+2)
+		for (j = 0; j < n; j += block)
 		{
-			for (k = 0; k < n; k += block+2)
+			for (k = 0; k < n; k += block)
 			{
-				for (int i1 = i; i1 < i + block+2; i1++)
+				for (int i1 = i; i1 < i + block; i1 += 2)
 				{
-					for (int j1 = j; j1 < j + block+2; j1++)
+					for (int j1 = j; j1 < j + block; j1 += 2)
 					{
 						register int t = i1 * n + j1; register int tt = t + n;
 						register double c00 = C[t]; register double c01 = C[t + 1];  register double c10 = C[tt]; register double c11 = C[tt + 1];
 
-						for (int k1 = k; k1 < k + block+2; k1++)
+						for (int k1 = k; k1 < k + block; k1 += 2)
 						{
 							register int ta = i1 * n + k1; register int tta = ta + n; register int tb = k1 * n + j1; register int ttb = tb + n;
 							register double a00 = A[ta]; register double a01 = A[ta + 1]; register double a10 = A[tta]; register double a11 = A[tta + 1];
