@@ -84,11 +84,11 @@ int main(int argc, char** argv)
 
 	/* ijk */
 
-	for (i = 0; i < n; i += block)
+	for (i = 0; i < n; i += block+2)
 	{
-		for (j = 0; j < n; j += block)
+		for (j = 0; j < n; j += block+2)
 		{
-			for (k = 0; k < n; k += block)
+			for (k = 0; k < n; k += block+2)
 			{
 				for (int i1 = i; i1 < i + block+2; i1++)
 				{
