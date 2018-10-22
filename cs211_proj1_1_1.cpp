@@ -1,91 +1,68 @@
+#include <stdio.h>                                                                             
+
+#include "cblas.h"                                                                             
 #include <iostream>
-#include "time.h"
-#include "cstdlib"
+#include "lapacke.h"                                                                           
 
-using namespace std;
+#include <string.h>                                                                            
 
-void RandomizeArrays(double arr1[], double arr2[], int array_size)
-{
-	int m = 0;
+                                                                                               
 
-	for (m = 0; m < array_size; ++m)
-	{
-		arr1[m] = rand() % 100;
-		arr2[m] = rand() % 100;
-	}
+using namespace std;                                                                           
+
+                                                                                               
+
+int main (int argc, const char * argv[]) {                                                     
+  int m = 2;                                                                                   
+  int n = 2;                                                                                   
+  int lda = 2;                                                                                 
+  int ldb = 2;       
+
+  double * A;
+  double * B;
+  double * C;
+
+  const int n = atoi(argv[1]);
+
+  A = (double*)malloca                                                                                 
+  double * A = new double[m*n];                                                                
+  double * B = new double[m];                                                                  
+  int * ipiv = new int[m];                                                                     
+                                                                                                                                                                                                                                                                                                                                                                                           
+
+  A[0] = 4; A[1] = 6;  B[0] = 2;                                                               
+  A[2] = 3; A[3] = 3;  B[1] = 10;                                                              
+
+                                                                                                                                                                                                                                                                                         
+
+  LAPACKE_dgetrf( LAPACK_COL_MAJOR, m, n, A, lda, ipiv );                                      
+                                                                                               
+
+  for (int i = 0; i < m; i++) {                                                                
+
+      for (int j = 0; j < n; j++){       
+          cout << " " << A[lda*j+i] << " ";                                
+          printf("  %lf ", A[lda*j+i]);                                                        
+
+      }                                                                                        
+
+      cout << endl;                                                                      
+
+                                                                                               
+
+  }                                                                                            
+
+                                                                                               
+
+  cblas_dtrsm(CblasColMajor, CblasLeft, CblasLower, CblasNoTrans, CblasNonUnit, m, 1, 1.0, A, lda, B, ldb);      
+
+for(int i=0; i < n; i++){
+    
+    cout << " " << B[i] << " ";
+    cout << endl;
+
 }
 
-
-
-
-int main(int argc, char** argv)
-{
-	int i = 0;
-	int j = 0;
-	int k = 0;
-
-	double * C;
-	double * B;
-	double * A;
-
-	const int n = atoi(argv[1]);
-
-	const int arr_size = n * n;
-
-
-	C = (double*)malloc(arr_size * 8);
-	B = (double*)malloc(arr_size * 8); 
-	A = (double*)malloc(arr_size * 8);
-
-
-	RandomizeArrays(A, B, arr_size);
-
-
-
-	clock_t t;
-
-	t = clock();
-
-
-
-	/* dgemm(): simple ijk version triple loop algorithm */
-
-	for (i = 0; i < n; i++)
-	{
-		for (j = 0; j < n; j++)
-		{
-			for (k = 0; k < n; k++)
-			{
-				C[i*n + j] += A[i*n + k] * B[k*n + j];
-			}
-		}
-	}
-
-	t = clock() - t;
-
-	cout << "For dgemm0 and n size of " << n << " we have clock time of " << (double(t)/CLOCKS_PER_SEC) << endl;
-
-	RandomizeArrays(A, B, arr_size);
-
-	t = clock();
-
-	/* dgemm1: simple ijk version triple loop algorithm with register reuse */
-
-	for (i = 0; i < n; i++)
-	{
-		for (j = 0; j < n; j++)
-		{
-			register double r = C[i*n + j];
-			for (k = 0; k < n; k++)
-			{
-				r += A[i*n + k] * B[k*n + j];
-			}
-			C[i*n + j] = r;
-		}
-	}
-
-	t = clock() - t;
-
-	cout << "For dgemm1 and n size of " << n << " we have clock time of " << (double(t) / CLOCKS_PER_SEC) << endl << endl;
+  return 0;
 
 }
